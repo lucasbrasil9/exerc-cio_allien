@@ -46,6 +46,7 @@
         var pontuacao = 0;
         var placar;
         var passarinho;
+        var nave;
 
         // função preload que pré-carrega a imagem do background e do alienígena e do fogo
         function preload() {
@@ -55,6 +56,7 @@
             this.load.image('plataforma_tijolo', 'assets/tijolos.png');
             this.load.image('moeda', 'assets/moeda.png');
             this.load.spritesheet('bird', 'assets/bird-purple.png', { frameWidth: 75, frameWidth: 75 });
+            this.load.image('nave_alienigena', 'assets/—Pngtree—alien spaceships ufo with blue_6329025.png');
         }
 
         // cria a função create que cria no jogo o background e seu tamanho que é metade do valor da variável altura e largura, e a cria a sprite do fogo e do alienígena
@@ -102,7 +104,7 @@
             });
 
             // cria a sprite do passarinho, define sua posição x e y e seu tamanho
-            passarinho = this.add.sprite(100, 150, 'bird').setScale(1.3);
+            passarinho = this.add.sprite(100, 200, 'bird').setScale(1.3);
 
             // cria a animação, especifíca as sprites de início e fim, taxa de frames e quantidade de repetições
             this.anims.create({
@@ -114,6 +116,9 @@
 
             // ativa a animção de voar do passarinho
             passarinho.anims.play('fly', true);
+
+            nave = this.physics.add.staticImage(500, 120, 'nave_alienigena');
+            this.physics.add.collider(alien, nave);
 
         }
         
